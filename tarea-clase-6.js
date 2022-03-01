@@ -65,7 +65,6 @@ document.querySelector('#borrar').onclick = function(){
 	document.querySelector('#cantidad-integrantes').value = null;
 }
 
-
 function crearIntegrantes(cantidadIntegrantes){
 	for (i=0; i<cantidadIntegrantes; i++){
 		crearIntegrante(i)
@@ -87,7 +86,6 @@ function crearIntegrante(i){
 	const $integrantes = document.querySelector('#integrantes');
 	$integrantes.appendChild($div);
 }
-
 
 function calcularNumeroMayor(array){
 	let numeroMayor = array[0];
@@ -119,15 +117,27 @@ function calcularNumeroPromedio(array){
 	return numeroPromedio;
 }
 
+let salarios = [];
+
 document.querySelector('#boton-agregar-salarios').onclick = function(){
 	agregarSalarios(cantidadIntegrantes);
 	
-	$botonCalcularSalarios = document.createElement('input');
+	const $botonCalcularSalarios = document.createElement('input');
 	$botonCalcularSalarios.type = 'button';
 	$botonCalcularSalarios.value = 'Calcular';
 	document.querySelector('#salarios').appendChild($botonCalcularSalarios);
 
-	$botonBorrarTodo = document.createElement('input');
+	$botonCalcularSalarios.onclick = function(){
+		for (let i=0; i<cantidadIntegrantes; i++){
+			let nodeListSalarios = document.querySelectorAll('.salario');
+			salarios[i] = Number(nodeListSalarios[i]).value;
+		}
+		calcularNumeroMayor(salarios);
+		calcularNumeroMenor(salarios);
+		calcularNumeroPromedio(salarios);
+	}
+
+	const $botonBorrarTodo = document.createElement('input');
 	$botonBorrarTodo.type = 'button';
 	$botonBorrarTodo.value = 'Borrar';
 	document.querySelector('#salarios').appendChild($botonBorrarTodo);
@@ -141,13 +151,12 @@ function agregarSalarios(cantidadIntegrantes){
 		$labelSalario.textContent = `Salario del integrante N° ${i+1}`;
 		$inputSalario = document.createElement('input');
 		$inputSalario.type = 'number';
+		$inputSalario.className = 'salario';
 		$inputSalario.placeholder = 'Ingresar salario';
 		$divSalario.appendChild($labelSalario);
 		$divSalario.appendChild($inputSalario);
 	}
 }
-
-
 
 
 /*
