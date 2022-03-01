@@ -30,9 +30,9 @@ document.querySelector('#calcular').onclick = function(){
 	}
 	//return edades;
 
-	edadMayor = calcularEdadMayor(edades);
-	edadMenor = calcularEdadMenor(edades);
-	edadPromedio = calcularEdadPromedio(edades);
+	edadMayor = calcularNumeroMayor(edades);
+	edadMenor = calcularNumeroMenor(edades);
+	edadPromedio = calcularNumeroPromedio(edades);
 
 	
 	const $resultadoEdadMenor = document.createElement('em');
@@ -89,34 +89,34 @@ function crearIntegrante(i){
 }
 
 
-function calcularEdadMayor(edades){
-	let edadMayor = edades[0];
+function calcularNumeroMayor(array){
+	let numeroMayor = array[0];
 	for (i=0; i<cantidadIntegrantes; i++){
-		if (edades[i] > edadMayor){
-			edadMayor = edades[i];
+		if (array[i] > numeroMayor){
+			numeroMayor = array[i];
 		}
 	}
-	return edadMayor;
+	return numeroMayor;
 }
 
-function calcularEdadMenor(edades){
-	let edadMenor = edades[0];
+function calcularNumeroMenor(array){
+	let numeroMenor = array[0];
 	for (i=0; i<cantidadIntegrantes; i++){
-		if (edades[i] < edadMenor){
-			edadMenor = edades[i];
+		if (array[i] < numeroMenor){
+			numeroMenor = array[i];
 		}
 	}
-	return edadMenor;
+	return numeroMenor;
 }
 
-function calcularEdadPromedio(edades){
-	let edadPromedio;
-	let sumaEdades = 0;
+function calcularNumeroPromedio(array){
+	let numeroPromedio;
+	let sumaNumeros = 0;
 	for (i=0; i < cantidadIntegrantes; i++){
-		sumaEdades += edades[i];
+		sumaNumeros += array[i];
 	}
-	edadPromedio = sumaEdades / cantidadIntegrantes;
-	return edadPromedio;
+	numeroPromedio = sumaNumeros / cantidadIntegrantes;
+	return numeroPromedio;
 }
 
 document.querySelector('#boton-agregar-salarios').onclick = function(){
@@ -131,7 +131,6 @@ document.querySelector('#boton-agregar-salarios').onclick = function(){
 	$botonBorrarTodo.type = 'button';
 	$botonBorrarTodo.value = 'Borrar';
 	document.querySelector('#salarios').appendChild($botonBorrarTodo);
-
 }
 
 function agregarSalarios(cantidadIntegrantes){
@@ -147,6 +146,7 @@ function agregarSalarios(cantidadIntegrantes){
 		$divSalario.appendChild($inputSalario);
 	}
 }
+
 
 
 
