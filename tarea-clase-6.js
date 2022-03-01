@@ -21,7 +21,6 @@ document.querySelector('#enviar').onclick = function(){
 	//return cantidadIntegrantes;
 
 	crearIntegrantes(cantidadIntegrantes);
-	
 }
 
 document.querySelector('#calcular').onclick = function(){
@@ -118,6 +117,25 @@ function calcularEdadPromedio(edades){
 	}
 	edadPromedio = sumaEdades / cantidadIntegrantes;
 	return edadPromedio;
+}
+
+document.querySelector('#boton-agregar-salarios').onclick = function(){
+	agregarSalarios(cantidadIntegrantes);
+}
+
+function agregarSalarios(cantidadIntegrantes){
+	for (let i=0; i<cantidadIntegrantes; i++){
+		$divSalario = document.createElement('div');
+		document.querySelector('#salarios').appendChild($divSalario);
+		$labelSalario = document.createElement('label');
+		$labelSalario.textContent = `Salario del integrante N° ${i+1}`;
+		$inputSalario = document.createElement('input');
+		$inputSalario.type = 'number';
+		$inputSalario.placeholder = 'Ingresar salario';
+
+		$divSalario.appendChild($labelSalario);
+		$divSalario.appendChild($inputSalario);
+	}
 }
 
 
