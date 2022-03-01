@@ -121,6 +121,17 @@ function calcularEdadPromedio(edades){
 
 document.querySelector('#boton-agregar-salarios').onclick = function(){
 	agregarSalarios(cantidadIntegrantes);
+	
+	$botonCalcularSalarios = document.createElement('input');
+	$botonCalcularSalarios.type = 'button';
+	$botonCalcularSalarios.value = 'Calcular';
+	document.querySelector('#salarios').appendChild($botonCalcularSalarios);
+
+	$botonBorrarTodo = document.createElement('input');
+	$botonBorrarTodo.type = 'button';
+	$botonBorrarTodo.value = 'Borrar';
+	document.querySelector('#salarios').appendChild($botonBorrarTodo);
+
 }
 
 function agregarSalarios(cantidadIntegrantes){
@@ -132,7 +143,6 @@ function agregarSalarios(cantidadIntegrantes){
 		$inputSalario = document.createElement('input');
 		$inputSalario.type = 'number';
 		$inputSalario.placeholder = 'Ingresar salario';
-
 		$divSalario.appendChild($labelSalario);
 		$divSalario.appendChild($inputSalario);
 	}
